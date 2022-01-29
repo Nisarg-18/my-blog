@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="bg-dark text-light">
+    <div class="container">
+
+    <h1 class="mb-3 text-center">
+        {{ blog.title }}
+    </h1>
+   <div class="text-center">
+    <img src="{{ blog.thumbnail.url }}" alt="" class="img-fluid rounded"></div>
+    <section class="p-3">
+    <p>
+        {{ blog.blog_desc | safe }}
+    </p>
+</section>
+</div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,11 @@
+body::before {
+    display: block;
+    content: '';
+    height: 50px;
+  }
+  img{
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+}

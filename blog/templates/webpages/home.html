@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+ <!-- welcome section starts -->
+ <section class="bg-dark text-light p-5">
+    <div class="container">
+      <div class="row align-items-center justify-content-between text-center">
+        <div class="col-md text-start">
+          <h2><span class="text-primary"> Welcome </span> to my Blog</h2>
+          <p class="lead">
+            Dive into the random <span class="text-info">thoughts</span> and
+            <span class="text-info">topics</span>.
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id iusto
+            dignissimos facere blanditiis, obcaecati consequuntur. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Voluptatum
+            perferendis laboriosam vel molestiae iure quam voluptas deserunt
+            repudiandae minima odio.
+          </p>
+
+          <a href="{% url 'blogs' %}" class="btn btn-warning"> Explore Blogs </a>
+        </div>
+        <div class="col-md d-none d-sm-block">
+          <img class="img-fluid w-50" src="{% static 'assets/welcome.svg' %}" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- welcome section ends -->
+
+  <!-- genres starts -->
+  <div class="text-center mt-5" id="genre">
+    <h2>Genres</h2>
+  </div>
+  <section class="p-3">
+    <div class="container">
+      <div class="row justify-content-between align-items-center g-5">
+        <div class="col-md">
+          <div class="card text-center bg-dark text-light">
+            <div class="card-body">
+              <i class="bi bi-laptop h1"></i>
+              <div class="card-title">
+                <h3>Tech</h3>
+              </div>
+              <div class="card-text">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat quae ipsam sit, sint neque, quisquam delectus,
+                  reprehenderit corporis eius molestias culpa assumenda
+                  voluptatem voluptatum laudantium eos ipsum omnis repellat
+                  reiciendis?
+                </p>
+              </div>
+              <a href="{% url 'blogs' %}" class="btn btn-primary"> Explore </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md">
+          <div class="card text-center bg-secondary text-light">
+            <div class="card-body">
+              <i class="bi bi-geo-alt h1"></i>
+              <div class="card-title">
+                <h3>Travel</h3>
+              </div>
+              <div class="card-text">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat quae ipsam sit, sint neque, quisquam delectus,
+                  reprehenderit corporis eius molestias culpa assumenda
+                  voluptatem voluptatum laudantium eos ipsum omnis repellat
+                  reiciendis?
+                </p>
+              </div>
+              <a href="{% url 'blogs' %}" class="btn btn-dark"> Explore </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card text-center bg-dark text-light">
+            <div class="card-body">
+              <i class="bi bi-controller h1"></i>
+              <div class="card-title">
+                <h3>Games</h3>
+              </div>
+              <div class="card-text">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat quae ipsam sit, sint neque, quisquam delectus,
+                  reprehenderit corporis eius molestias culpa assumenda
+                  voluptatem voluptatum laudantium eos ipsum omnis repellat
+                  reiciendis?
+                </p>
+              </div>
+              <a href="{% url 'blogs' %}" class="btn btn-primary"> Explore </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- genres ends -->
+
+  <!-- blogs section starts -->
+
+  <section class="p-5 bg-dark text-light" id="blog">
+    <h2 class="text-center mb-5">Blogs</h2>
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-4">
+        {% for b in blogs %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <a href="{% url 'blogdetail' b.id %}" class="text-decoration-none text-light">
+            <div class="photo">
+          <img class="img-fluid rounded mb-2" src="{{ b.thumbnail.url }}" alt="" />
+        </div>
+          <h4>{{ b.title }}</h4>
+          <p><i class="bi bi-book"></i> {{ b.mins_required }} min read</p>
+        </a>
+        </div>
+        {% endfor %}
+    
+      </div>
+    </div>
+    <div class="container text-center">
+    <a href="{% url 'blogs' %}" class="btn btn-warning text-center text-dark align-items-center">
+      See All
+    </a>
+  </div>
+  </section>
+  <!-- blogs section ends -->
+{% endblock %}
