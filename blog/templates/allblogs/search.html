@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+
+<section class="bg-dark text-light" id="blog">
+  <h2 class="text-center mb-5">Blogs</h2>
+  <div class="container">
+    <div class="row align-items-center justify-content-between g-4">
+      {% if blogs|length == 0 %}
+
+      <h2 class="text-center">Couldn't find anything!</h2>
+      {% else %} 
+      {% for b in blogs %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+      <a href="{% url 'blogdetail' b.id %}" class="text-decoration-none text-light">
+<div class="photo">
+        <img class="img-fluid rounded mb-2" src="{{ b.thumbnail.url }}" alt="" />
+      </div>
+        <h4>{{ b.title }}</h4>
+        <p><i class="bi bi-book"></i> {{ b.mins_required }} min read</p>
+    </a>
+
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
